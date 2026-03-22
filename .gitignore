@@ -1,3 +1,10 @@
+# custom to the repo
+data/
+*.pkl
+__pycache__/
+.ipynb_checkpoints/
+
+# general generated at repo creation using python .gitignore option on github
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
