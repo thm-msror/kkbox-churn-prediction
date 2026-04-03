@@ -1,11 +1,11 @@
-# KKBox Churn Prediction
+# KKBox churn prediction
 
 End-to-end machine learning pipeline to predict subscriber churn for KKBox, Asia's largest music streaming platform. Built for DSAI 4103 Business Analytics at the University of Doha for Science and Technology.
 
 - **Student:** Tehreem Masroor | 60302531
 - **Course:** DSAI 4103 — Business Analytics
 - **University:** University of Doha for Science and Technology
-- **Due:** April 4, 2026
+- **Submission:** April 4, 2026
 
 ---
 
@@ -28,7 +28,7 @@ This project predicts which users will not renew within 30 days of their subscri
 | F1 score (default threshold 0.5) | 0.6257 |
 | Precision | 0.8382 |
 | Recall | 0.7767 |
-| Holdout f1 (500 never-seen users) | 0.9176 |
+| Holdout F1 (500 never-seen users) | 0.9176 |
 | Holdout AUC | 0.9971 |
 
 ---
@@ -37,7 +37,7 @@ This project predicts which users will not renew within 30 days of their subscri
 
 **Source:** https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge/data
 
-Join the competition on Kaggle (free) to access the files. Download the 4 files below and place them in the `data/` folder. Data files are not included in this repo — the raw files total ~1.8 GB and exceed GitHub's 100 MB limit.
+Join the competition on Kaggle (free) to access the files. Download the 4 files below and place them in the `data/` folder. Data files are not included in this repo because the raw files total approximately 1.8 GB and exceed GitHub's 100 MB limit.
 
 | File | Rows | Description |
 |---|---|---|
@@ -59,26 +59,25 @@ Join the competition on Kaggle (free) to access the files. Download the 4 files 
 
 ```
 kkbox-churn-prediction/
-│
 ├── notebooks/
-│   ├── 01_EDA.ipynb                     ← data loading, aggregation, merging, cleaning, 7 eda charts
-│   ├── 02_features.ipynb                ← feature engineering, k=6 clustering, cluster profiles
-│   └── 03_modeling.ipynb                ← automl (60 combinations), threshold tuning, shap, bias, mlflow
+│   ├── 01_EDA.ipynb                     <- data loading, aggregation, merging, cleaning, 7 eda charts
+│   ├── 02_features.ipynb                <- feature engineering, k=6 clustering, cluster profiles
+│   └── 03_modeling.ipynb                <- automl (60 combinations), threshold tuning, shap, bias, mlflow
 │
 ├── models/
-│   ├── churn_model.pkl                  ← trained imb pipeline: tomek links + lightgbm
-│   ├── feature_cols.json                ← list of 23 feature column names used in training
-│   ├── threshold.json                   ← optimal decision threshold (0.8526)
-│   ├── kmeans_model.pkl                 ← fitted kmeans(k=6) for assigning clusters to new users
-│   ├── cluster_scaler.pkl               ← fitted standardscaler used for clustering
-│   └── cluster_names.json               ← cluster number to cluster name mapping
+│   ├── churn_model.pkl                  <- trained pipeline: tomek links + lightgbm
+│   ├── feature_cols.json                <- list of 23 feature column names used in training
+│   ├── threshold.json                   <- optimal decision threshold (0.8526)
+│   ├── kmeans_model.pkl                 <- fitted kmeans(k=6) for assigning clusters to new users
+│   ├── cluster_scaler.pkl               <- fitted standardscaler used for clustering
+│   └── cluster_names.json               <- cluster number to cluster name mapping
 │
 ├── scoring/
-│   ├── prepare_data.py                  ← stage 1: aggregate raw csvs, clean, engineer features, assign clusters
-│   └── score.py                         ← stage 2: load pkl, score prepared data, output predictions
+│   ├── prepare_data.py                  <- stage 1: aggregate raw csvs, clean, engineer features, assign clusters
+│   └── score.py                         <- stage 2: load pkl, score prepared data, output predictions
 │
 ├── dashboard/
-│   └── kkbox_dashboard.pbix             ← power bi dashboard connected to model_ready_with_predictions.csv
+│   └── kkbox_dashboard.pbix             <- power bi dashboard connected to model_ready_with_predictions.csv
 │
 ├── Visualizations/
 │   ├── plot_age_boxplot_before.png
@@ -106,20 +105,20 @@ kkbox-churn-prediction/
 │   ├── plot_bias_gender.png
 │   └── plot_bias_city.png
 │
-├── data/                                ← not tracked by git (too large, see .gitignore)
-│   ├── members_v3.csv                   ← download from kaggle
-│   ├── transactions_v2.csv              ← download from kaggle
-│   ├── user_logs_v2.csv                 ← download from kaggle
-│   ├── train_v2.csv                     ← download from kaggle
+├── data/                                <- not tracked by git (too large, see .gitignore)
+│   ├── members_v3.csv
+│   ├── transactions_v2.csv
+│   ├── user_logs_v2.csv
+│   ├── train_v2.csv
 │   └── merged_datasets/
-│       ├── merged_df.csv                ← output of 01_EDA.ipynb
-│       ├── model_ready.csv              ← output of 02_features.ipynb
-│       ├── model_ready_with_predictions.csv  ← output of 03_modeling.ipynb, connect this to power bi
-│       ├── holdout_new_users.csv        ← 500 users set aside for deployment testing
-│       └── holdout_scored.csv           ← scored holdout output
+│       ├── merged_df.csv                <- output of 01_EDA.ipynb
+│       ├── model_ready.csv              <- output of 02_features.ipynb
+│       ├── model_ready_with_predictions.csv  <- output of 03_modeling.ipynb, connect to power bi
+│       ├── holdout_new_users.csv        <- 500 users set aside for deployment testing
+│       └── holdout_scored.csv           <- scored holdout output (deployment demo)
 │
-├── mlruns/                              ← not tracked by git (mlflow experiment logs)
-├── venv/                                ← not tracked by git (virtual environment)
+├── mlruns/                              <- not tracked by git (mlflow experiment logs)
+├── venv/                                <- not tracked by git (virtual environment)
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -149,7 +148,7 @@ pip install -r requirements.txt
 # 4. register the jupyter kernel
 python -m ipykernel install --user --name kkbox-env --display-name "KKBox Project"
 
-# 5. download data from kaggle (see dataset section above) and place in data/ folder
+# 5. download data from kaggle and place in data/ folder
 ```
 
 Open Jupyter, select kernel: KKBox Project, then run the notebooks in order.
@@ -177,7 +176,7 @@ Each notebook saves its output to `data/merged_datasets/`. Run them top to botto
 
 The deployment pipeline has two stages. Stage 1 aggregates raw event data to one row per user. Stage 2 runs the sklearn pipeline to output churn predictions.
 
-**Stage 1 — prepare raw data** (5-10 minutes, handles aggregation and cleaning):
+**Stage 1 — prepare raw data** (5-10 minutes):
 
 ```bash
 python scoring/prepare_data.py \
@@ -203,37 +202,60 @@ python scoring/score.py \
     --input  data/merged_datasets/holdout_new_users.csv \
     --output data/merged_datasets/holdout_scored.csv
 
-# Expected: f1=0.9176  AUC=0.9971  predicted churners: 40/500
+# Expected: F1=0.9176  AUC=0.9971  predicted churners: 40/500
 ```
 
-**Refresh power bi:** replace `model_ready_with_predictions.csv` with the new scored file, then click Home → Refresh in Power BI.
+`score.py` can be run multiple times without issues. Each run overwrites the output file with fresh predictions.
+
+**Refresh power bi:** replace `model_ready_with_predictions.csv` with the new scored file and click Home -> Refresh in Power BI Desktop.
 
 ---
 
-## Why two stages
+## Why prepare_data.py was not used for the holdout set
 
-Sklearn's `ColumnTransformer` operates row by row — it scales, encodes, and imputes one user at a time. It cannot aggregate 18 million daily events by user id to compute averages. That requires seeing all events for a user before any result can be produced.
+The holdout set (`holdout_new_users.csv`) was created inside notebook 3 by splitting off 500 rows from `model_ready.csv`, which is already the fully processed and feature-engineered dataset. This means the holdout already has all the cleaning, feature engineering, and cluster assignments applied. It does not need to go through `prepare_data.py`.
 
-`prepare_data.py` handles the aggregation step. `score.py` handles the sklearn inference step. This two-stage architecture is standard in production ml systems — the data engineering pipeline and the ml inference pipeline are always separate. We learned about this standard separation after completing the main notebooks. If we had known this earlier, we would have held out some raw data rows (e.g., 20 rows from members, transactions, user_logs) with the same `msno` to fully test `prepare_data.py` end-to-end. Currently, the holdout test uses already-aggregated data.
+`prepare_data.py` exists for the scenario where completely new raw data arrives in the same format as the original Kaggle files — one row per user-day in user_logs, one row per transaction in transactions. That script runs the same aggregation, cleaning, and feature engineering steps that notebooks 1 and 2 performed, then assigns clusters using the saved KMeans model, producing a file that `score.py` can score.
+
+If this project continued after submission, the correct test for `prepare_data.py` would be to hold back a small group of users with their complete raw event history in the original unaggregated tables, then run both stages end to end. This was not done because the preprocessing was completed in the notebooks before the project was structured this way.
 
 ---
 
-## Technical Explanations
+## Why Tomek Links
 
-**Threshold Tuning:** 
-By default, models use a 0.5 threshold to classify churn vs. retain. Because our data is imbalanced (9% churn) and the business cost of a false negative (losing a customer) is worse than a false positive (wasted discount), we optimized the threshold. Tuning it to 0.8526 significantly improved our F1 score from 0.63 to 0.81, balancing precision and recall to be highly effective for a marketing budget.
+The dataset has a 9% churn rate. This class imbalance means most models see so many retained users during training that they can achieve high accuracy by mostly ignoring churners. Tomek Links is an undersampling technique that removes retained users that are the nearest neighbour of a churned user, cleaning the boundary between the two classes and making it easier for the model to learn the distinction.
 
-**Tomek Links (Undersampling):**
-With only ~9% churners, a model could simply predict "retain" every time and be 91% "accurate." Tomek links combats this by finding pairs of nearest neighbors from opposite classes and removing the instance from the majority class. This cleans the decision boundary without generating "fake" synthetic data. Inside our `ImbPipeline`, it is only applied during training and is automatically skipped during predictions.
+Tomek Links was selected over oversampling techniques like SMOTE because the AutoML comparison of 60 combinations showed that LightGBM + Tomek Links achieved the highest validation F1 score. It only runs during `.fit()` — during prediction on new data, the step is automatically skipped by the ImbPipeline.
 
-**SHAP & Bias Analysis:**
-Explainability proves the model is learning real patterns. The SHAP summary plot confirms the most important features make business sense. Most importantly, **SHAP waterfall plots are actionable**: a customer success agent can pull up a churning user, see exactly *why* they are high risk (e.g., auto-renew was disabled), and tailor the intervention message. Bias analysis was conducted to ensure the model behaves fairly; we found no demographic bias, achieving an F1 score of ~0.82 for both male and female users.
+---
+
+## Why threshold tuning
+
+By default, a classifier predicts churn if the estimated probability is above 0.5. At threshold 0.5, the model had precision=0.47, meaning 53% of users flagged as churners were actually going to renew — over half of all targeted discounts would be wasted.
+
+The precision-recall curve was used to test every possible threshold on the held-out test set with the real 9% churn ratio preserved. The threshold that maximised F1 was 0.8526, giving precision=0.84 and recall=0.78. At this threshold, 84% of targeted users are genuine churners. The recall decrease from 0.93 to 0.78 is an acceptable trade-off because sending a discount to someone who was going to renew anyway has a direct cost, while missing a churner means losing a subscriber entirely.
+
+---
+
+## SHAP and bias analysis — what they are and how to act on results
+
+**SHAP** explains why the model made each prediction. The summary plot shows that `auto_renew_rate` is the single most influential feature — users who rarely auto-renew are far more likely to be predicted as churners. The waterfall plot for a specific user shows exactly which features drove that individual prediction.
+
+Practically, a retention analyst would use SHAP output to inform campaign design. If SHAP shows that low auto_renew_rate is the dominant driver for a segment, the most effective intervention is an offer to enable auto-renew rather than a price discount. If low listening time is the dominant driver, the intervention might be re-engagement content.
+
+**Bias analysis** checks whether the model performs fairly across demographic groups. F1 was computed separately for each gender (male: 0.82, female: 0.83, unknown: 0.78) and the top 5 cities. If any group had a significantly lower F1, that group would be systematically excluded from retention campaigns not because they are low-risk but because the model is less accurate for them. Results showed no significant bias — maximum difference across gender groups was 0.05, within the acceptable range. No corrective action was required, but the analysis is documented so that fairness can be re-evaluated when the model is retrained.
+
+---
+
+## Why two stages in deployment
+
+Sklearn's `ColumnTransformer` operates row by row. It cannot aggregate 18 million daily events by user id to compute averages — that requires seeing all events for a user before any result can be produced. `prepare_data.py` handles aggregation (Stage 1). `score.py` handles sklearn inference (Stage 2). This two-stage architecture is standard in production ML systems.
 
 ---
 
 ## Experiment tracking
 
-All 60 automl combinations and the final model are logged to mlflow.
+All 60 AutoML combinations and the final model are logged to MLflow.
 
 ```bash
 mlflow ui
@@ -242,11 +264,11 @@ mlflow ui
 
 ---
 
-## Power BI Dashboard
+## Power BI dashboard
 
 Open `dashboard/kkbox_dashboard.pbix` in Power BI Desktop. The dashboard is connected to `data/merged_datasets/model_ready_with_predictions.csv`.
 
-To update the dashboard with new predictions: run `score.py` on new data, replace the csv, and click Home → Refresh.
+The dashboard includes four KPI cards (total users, churn rate, high-risk count, average probability), a donut chart, cluster and city bar charts, an engagement scatter plot, and three slicers for filtering by segment, gender, and churn prediction.
 
 ---
 
@@ -256,12 +278,12 @@ To update the dashboard with new predictions: run `score.py` on new data, replac
 |---|---|
 | Pandas | Data loading, aggregation, cleaning, merging |
 | Scikit-learn | Clustering, ColumnTransformer, preprocessing pipeline |
-| Imbalanced-learn | Tomek links undersampling, ImbPipeline |
+| Imbalanced-learn | Tomek Links undersampling, ImbPipeline |
 | PyCaret | AutoML: 60 model + sampling combinations |
 | LightGBM | Final churn prediction model |
-| Shap | Model explainability — feature importance and individual predictions |
-| Mlflow | Experiment tracking — all 61 runs logged |
-| Power bi | Interactive dashboard for the retention marketing team |
+| SHAP | Model explainability — feature importance and individual predictions |
+| MLflow | Experiment tracking — all 61 runs logged |
+| Power BI | Interactive dashboard for the retention marketing team |
 
 ---
 
@@ -280,7 +302,7 @@ To update the dashboard with new predictions: run `score.py` on new data, replac
 
 ## Notes
 
-- `cuml` warnings from PyCaret can be safely ignored. Cuml is a gpu-only library that is not required for this project and cannot be installed on Windows via pip.
-- `logs.log` is generated automatically by PyCaret. It is excluded from git via `.gitignore`.
-- All random states are set to 42 throughout the project, making results fully reproducible.
+- `cuml` warnings from PyCaret can be safely ignored. cuml is a GPU-only library not required for this project.
+- `logs.log` is generated automatically by PyCaret and excluded from git via `.gitignore`.
+- All random states are set to 42 throughout, making results fully reproducible.
 - The `venv/`, `data/`, and `mlruns/` folders are excluded from git. See `.gitignore`.
