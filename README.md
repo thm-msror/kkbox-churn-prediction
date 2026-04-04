@@ -7,6 +7,8 @@ End-to-end machine learning pipeline to predict subscriber churn for KKBox, Asia
 - **University:** University of Doha for Science and Technology
 - **Submission:** April 4, 2026
 
+PowerBI Dashboard: https://app.powerbi.com/links/gVHVWOaBC0?ctid=b30f4b44-46c6-4070-9997-f87b38d4771c&pbi_source=linkShare
+
 ---
 
 ## Business problem
@@ -265,6 +267,8 @@ mlflow ui
 ---
 
 ## Power BI dashboard
+
+https://app.powerbi.com/links/gVHVWOaBC0?ctid=b30f4b44-46c6-4070-9997-f87b38d4771c&pbi_source=linkShare
 
 Open `dashboard/kkbox_dashboard.pbix` in Power BI Desktop. The dashboard is connected to `data/merged_datasets/model_ready_with_predictions.csv`.
 
